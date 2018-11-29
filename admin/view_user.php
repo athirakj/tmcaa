@@ -35,7 +35,7 @@
   <!--banner-->	
 		    <div class="banner">		   
 				<h2>
-				<a href="home.php">Dashboard</a>
+				<a href="register.php">Dashboard</a>
                 				<i class="fa fa-angle-right"></i>
 				<span>View User Profile</span>
 

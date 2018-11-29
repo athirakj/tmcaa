@@ -1,49 +1,29 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<title>TMCAA</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Edit Profile</title>
+<link href="../admin/css/style1.css" rel='stylesheet' type='text/css' />
+<style>
+.myform{
+	width: 50%;
+    margin: 0 auto;
+    display: block;
+}
+.form-group1 input[type="text"],.form-group1 textarea{
+	width:83%;
+	    margin-bottom: 20px;
+}
+.vali-form{
+	padding:0px;
+}
+</style>
+</head>
 
-<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-<link href="css/bootstrap.min.css" rel='stylesheet' type='text/css' />
-<!--<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />--> 
-<!-- Custom Theme files -->
-<link href="css/style1.css" rel='stylesheet' type='text/css' />
-<link href="css/font-awesome.css" rel="stylesheet"> 
-<script src="js/jquery.min.js"> </script>
-<script src="js/bootstrap.min.js"> </script>
-  
-<!-- Custom and plugin javascript -->
-<link href="css/custom.css" rel="stylesheet">
-<script src="js/custom.js"></script>
-<script src="js/screenfull.js"></script>
- 
-
-	</head>
 <body>
-<div id="wrapper">
-<?php include('classes/class_db.php');  ?>
+<?php include ('../admin/classes/class_db.php'); ?>
 
-         <?php require_once('includes/side_nav.php'); ?>
-
-		 <div id="page-wrapper" class="gray-bg dashbard-1">
-       <div class="content-main">
-
- 	<!--grid-->
- 	<div class="validation-system">
-  <!--banner-->	
-		    <div class="banner">		   
-				<h2>
-				<a href="home.php">Dashboard</a>
-				<i class="fa fa-angle-right"></i>
-				<span>Update User</span>
-
-				</h2>
-		    </div>
-		<!--//banner-->
-	
- 		<div class="validation-form">
+<div class="validation-form myform">
  	<!---->
   <?php 
 //	echo "test";
@@ -163,7 +143,7 @@ while($row=mysqli_fetch_array($res1))
             </div>
           <div class="clearfix"> </div>  
         </form>
-     <?php
+     <?php                                                    
 }
 }
 ?>
@@ -177,19 +157,16 @@ if(isset($_POST['update']))
 	$re=mysqli_query($db,$sql_one);
 //		echo $sql_one();
 //	die();
+session_start();
+$sql="select * from registered_stu where student_id=".$_GET['upitem']."";
+$res1=mysqli_fetch_assoc(mysqli_query($db,$sql));
+$_SESSION["StuData"] = $res1;
 
-		echo '<meta http-equiv="Refresh" Content="0; URL=index.php">';
+		echo '<meta http-equiv="Refresh" Content="0; URL=profile.php">';
 
 }				
 ?>
  	<!---->
  </div>
- </div>
-
- </div>
-		</div>
-	   	</div>
-       
-     </body>
+</body>
 </html>
-

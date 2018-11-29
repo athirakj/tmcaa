@@ -33,7 +33,7 @@
                 <ul class="nav" id="side-menu">
 				
                     <li>
-                        <a href="index.php" class=" hvr-bounce-to-right"><i class="fa fa-dashboard nav_icon "></i><span class="nav-label">Dashboards</span> </a>
+                        <a href="register.php" class=" hvr-bounce-to-right"><i class="fa fa-dashboard nav_icon "></i><span class="nav-label">Dashboards</span> </a>
                     </li>                   
                    
                     <!--<li>

@@ -1,19 +1,32 @@
+<?php 
+session_start();
+//	echo '<script language="javascript"> alert("Lteest"'.$_SESSION["id"].'"tes"); </script>';
+
+// if (isset($_SESSION['id']) && $_SESSION['id']!=null) {
+// //	echo '<script language="javascript"> alert("logged in"); </script>';
+	// // session_destroy();
+	// // unset($_SESSION['id']);
+	// // header("location: ../index.php");
+// }
+// else
+// {
+	// echo '<script language="javascript"> alert("logged out"); </script>';
+	// session_destroy();
+	// unset($_SESSION['id']);
+	// header("location: ../index.php");
+// }
+?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<title>Admin</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-
+<title>TMCAA</title>
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 <link href="css/bootstrap.min.css" rel='stylesheet' type='text/css' />
-<!--<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />--> 
 <!-- Custom Theme files -->
-<link href="css/style.css" rel='stylesheet' type='text/css' />
+<link href="css/style1.css" rel='stylesheet' type='text/css' />
 <link href="css/font-awesome.css" rel="stylesheet"> 
 <script src="js/jquery.min.js"> </script>
-<script src="js/bootstrap.min.js"> </script>
-  
 <!-- Mainly scripts -->
 <script src="js/jquery.metisMenu.js"></script>
 <script src="js/jquery.slimscroll.min.js"></script>
@@ -21,217 +34,126 @@
 <link href="css/custom.css" rel="stylesheet">
 <script src="js/custom.js"></script>
 <script src="js/screenfull.js"></script>
- <script>
-function ajaxFunctionMainMenu2(page){
-	var ajaxRequest;  
-	try{
-		// Opera 8.0+, Firefox, Safari
-		ajaxRequest = new XMLHttpRequest();
-	} catch (e){
-		// Internet Explorer Browsers
-		try{
-			ajaxRequest = new ActiveXObject("Msxml2.XMLHTTP");
-		} catch (e) {
-			try{
-				ajaxRequest = new ActiveXObject("Microsoft.XMLHTTP");
-			} catch (e){
-				// Something went wrong
-				alert("Your browser broke!");
+		<script>
+		$(function () {
+			$('#supported').text('Supported/allowed: ' + !!screenfull.enabled);
+
+			if (!screenfull.enabled) {
 				return false;
 			}
-		}
-	
-	}
-	// Create a function that will receive data sent from the server
-	ajaxRequest.onreadystatechange = function(){
-		if(ajaxRequest.readyState == 4){
-		object = document.getElementById("ditrictid");
-			object.innerHTML = ajaxRequest.responseText;
-			object.className = "visibleNotifyMsgSubmenu";
-		}
-	}
-	var type=document.getElementById("states").value;
-    var query='?type='+ type ;
-	//alert(page);
-	ajaxRequest.open("GET", page+query, true);
-	ajaxRequest.send(null); 
-}
-</script>
 
-	</head>
+			
+
+			$('#toggle').click(function () {
+				screenfull.toggle($('#container')[0]);
+			});
+			
+
+			
+		});
+		</script>
+</head>
+
 <body>
 <div id="wrapper">
-<?php include('functions.php') ?>
 
-         <?php require_once('includes/side_nav.php'); ?>
+<!----->
+<?php require_once('classes/class_db.php'); ?>
 
-		 <div id="page-wrapper" class="gray-bg dashbard-1">
+<?php require_once('includes/side_nav.php'); ?>
+       <!-- -->
+        <div id="page-wrapper" class="gray-bg dashbard-1">
        <div class="content-main">
-
- 	<!--grid-->
- 	<div class="validation-system">
-  <!--banner-->	
+ 
+  		<!--banner-->	
 		    <div class="banner">		   
 				<h2>
 				<a href="index.php">Dashboard</a>
-				<i class="fa fa-angle-right"></i>
-				<span>Registration</span>
 				</h2>
 		    </div>
 		<!--//banner-->
+		<!--content-->
+		
+		<!---->
 	
- 		<div class="validation-form">
- 	<!---->
-  <?php 
-if(isset($_POST['submit']))
-{
-	$sql_one="insert into registered_users(name,c_name,s_id,d_id,muncipality,panchayath,phn,mobile,e_mail,url,cat_id,date,description,status)values('$_POST[name]','$_POST[cname]','$_POST[state]','$_POST[states]','$_POST[muncipality]','$_POST[panchayath]','$_POST[phn]','$_POST[mobile]','$_POST[mail]','$_POST[url]','$_POST[category]','$_POST[date]','$_POST[about]',1)";
-	$result=mysqli_query($db,$sql_one);
-	//	echo '<meta http-equiv="Refresh" Content="0; URL=#">';
+  
+		<div class="content-mid">
+        
+        <div class="col-md-9">
+        
+       <table class="table">
 
-	//echo $sql_one;
-//die();
-}
-?>
-  	    
-        <form action="#" method="post">
-         	<div class="vali-form" style="padding-bottom: 0;">      
-            <div class="col-md-6 form-group1">
-              <label class="control-label">Name</label>
-              <input type="text" placeholder="Name" name="name" required>
-            </div>
-            <div class="col-md-6 form-group1 form-last">
-              <label class="control-label">Companyname</label>
-              <input type="text" placeholder="Companyname" name="cname" required>
-            </div>
-            <div class="clearfix"> </div>
-            </div>
-            <div class="vali-form" style="padding-bottom: 0;">
-              <div class="col-md-6 form-group2 group-mail">
-              <label class="control-label">State</label>
-            <select name="state" id="states" onchange="javascript:ajaxFunctionMainMenu2('district_ajax.php');" required>
-            <option>select one</option>
-            	<?php
+  <thead>
+    <tr>
+      <th>Name</th>
+        <th>E-Mail</th>
+            <th>Contact</th>
+			<th>Payment Status</th>
+ <th>Action</th>
 
-$sql="select * from states";
-$res=mysqli_query($db,$sql);
+      <th style="width: 3.5em;"></th>
+    </tr>
+  </thead>
+  <tbody>
+  <?php
+$sql='select * from registered_stu where status=1 ORDER BY student_id DESC';
+// echo $sql;
+	$res=mysqli_query($db,$sql);
 
-while($row=mysqli_fetch_array($res))
+$i=1;
+while($row=mysqli_fetch_array($res)) 
 {
 ?>
-<option value="<?php echo $row['s_id'];?>">
-	<?php echo $row['states'];?>
-	</option>
-<?php
+
+    <tr>
+          <td><?=$row['name']; ?></td>
+     <td><?=$row['email']; ?></td>
+     <td><?=$row['phone']; ?></td>
+		  <td><?= $row['payment_status'] == '1'? 'paid' : 'not paid'; ?></td>
+      <td>
+
+<a href="delete-user.php?delcom=<?php echo $row['student_id'];?>"><!--<button class="btn paddi btn-default">Delete</button>--><span class="spa"><i class="fa fa-trash"></i></span></a>
+ <a href="update_user.php?upitem=<?php echo $row['student_id'];?>"><span class="spa"><i class="fa fa-pencil"></i></span></a>
+  <a href="view_user.php?viewitem=<?php echo $row['student_id'];?>"><span class="spa"><i class="fa fa-eye"></i></span></a>
+
+    </td>
+    </tr>
+  </tbody>
+  <?php
+
 }
+
 ?>
-            </select>
-            </div>              
 
-            <div class="col-md-6 form-group2 group-mail" id="ditrictid">
-              <label class="control-label">District</label>
- <select name="dis" id="district">
-            <option>select one</option>
-            	<?php
-
-$sql_two="select * from district";
-$res=mysqli_query($db,$sql_two);
-
-while($row=mysqli_fetch_array($res))
-{
-?>
-<option value="<?php echo $row['d_id'];?>">
-	<?php echo $row['district'];?>
-	</option>
-<?php
-}
-?>          </select>  </div>
-            <div class="clearfix"> </div>
-            </div>
-            
-            <div class="vali-form">      
-            <div class="col-md-6 form-group1">
-              <label class="control-label">Muncipality/Corporation</label>
-              <input type="text" placeholder="Muncipality or Corporation" name="muncipality" required>
-            </div>
-            <div class="col-md-6 form-group1 form-last">
-              <label class="control-label">Panchayath</label>
-              <input type="text" placeholder="Your Panchayath" name="panchayath" required>
-            </div>
-            <div class="clearfix"> </div>
-            </div>
-            <div class="vali-form">
-            <div class="col-md-6 form-group1">
-              <label class="control-label">Phone Number</label>
-              <input type="text" placeholder="Phone Number" name="phn">
-            </div>
-            <div class="col-md-6 form-group1 form-last">
-              <label class="control-label">Mobile Number</label>
-              <input type="text" placeholder="Mobile Number" name="mobile" required>
-            </div>
-            <div class="clearfix"> </div>
-            </div>
-            <div class="vali-form">
-            <div class="col-md-6 form-group1">
-              <label class="control-label">Email</label>
-              <input type="text" placeholder="example@gmail.com" name="mail" required>
-            </div>
-            <div class="col-md-6 form-group1 form-last">
-              <label class="control-label">Url</label>
-              <input type="text" placeholder="Current Website Url" name="url">
-            </div>
-            <div class="clearfix"> </div>
-            </div>
-       
-             <div class="clearfix"> </div>
-                         <div class="vali-form">
-              <div class="col-md-6 form-group2 group-mail">
-              <label class="control-label">Job Category</label>
-            <select name="category">
-            <option>select one</option>
-            	<?php
-
-$sql_cat="select * from category";
-$res=mysqli_query($db,$sql_cat);
-
-while($row=mysqli_fetch_array($res))
-{
-?>
-<option value="<?php echo $row['category'];?>">
-	<?php echo $row['category'];?>
-	</option>
-<?php
-}
-?>
-            </select>
-            </div>
-            <div class="col-md-6 form-group1 group-mail">
-              <label class="control-label ">Date</label>
-              <input type="date" class="form-control1 ng-invalid ng-invalid-required" ng-model="model.date" name="date" required>
-            </div>
-            
-            </div>
-             <div class="clearfix"> </div>
-            <div class="col-md-12 form-group1" style="width:100% !important;">
-              <label class="control-label">About You...</label>
-              <textarea  placeholder="Your Comment..." name="about"></textarea>
-            </div>
-             <div class="clearfix"> </div>
-            <div class="col-md-12 form-group" style="margin-top:15px;">
-              <input type="submit" class="btn btn-primary" value="Submit" name="submit">
-              <button type="reset" class="btn btn-default">Reset</button>
-            </div>
-          <div class="clearfix"> </div>  
-        </form>
-    
- 	<!---->
- </div>
- </div>
-
- </div>
+</table>
+        
+        </div>
+			
+			<div class="col-md-3" style="float:right;">
+					 <div class="cal1 cal_2"><div class="clndr"><div class="clndr-controls"><div class="clndr-control-button"><p class="clndr-previous-button">previous</p></div><div class="month">July 2015</div><div class="clndr-control-button rightalign"><p class="clndr-next-button">next</p></div></div><table class="clndr-table" border="0" cellspacing="0" cellpadding="0"><thead><tr class="header-days"><td class="header-day">S</td><td class="header-day">M</td><td class="header-day">T</td><td class="header-day">W</td><td class="header-day">T</td><td class="header-day">F</td><td class="header-day">S</td></tr></thead><tbody><tr><td class="day adjacent-month last-month calendar-day-2015-06-28"><div class="day-contents">28</div></td><td class="day adjacent-month last-month calendar-day-2015-06-29"><div class="day-contents">29</div></td><td class="day adjacent-month last-month calendar-day-2015-06-30"><div class="day-contents">30</div></td><td class="day calendar-day-2015-07-01"><div class="day-contents">1</div></td><td class="day calendar-day-2015-07-02"><div class="day-contents">2</div></td><td class="day calendar-day-2015-07-03"><div class="day-contents">3</div></td><td class="day calendar-day-2015-07-04"><div class="day-contents">4</div></td></tr><tr><td class="day calendar-day-2015-07-05"><div class="day-contents">5</div></td><td class="day calendar-day-2015-07-06"><div class="day-contents">6</div></td><td class="day calendar-day-2015-07-07"><div class="day-contents">7</div></td><td class="day calendar-day-2015-07-08"><div class="day-contents">8</div></td><td class="day calendar-day-2015-07-09"><div class="day-contents">9</div></td><td class="day calendar-day-2015-07-10"><div class="day-contents">10</div></td><td class="day calendar-day-2015-07-11"><div class="day-contents">11</div></td></tr><tr><td class="day calendar-day-2015-07-12"><div class="day-contents">12</div></td><td class="day calendar-day-2015-07-13"><div class="day-contents">13</div></td><td class="day calendar-day-2015-07-14"><div class="day-contents">14</div></td><td class="day calendar-day-2015-07-15"><div class="day-contents">15</div></td><td class="day calendar-day-2015-07-16"><div class="day-contents">16</div></td><td class="day calendar-day-2015-07-17"><div class="day-contents">17</div></td><td class="day calendar-day-2015-07-18"><div class="day-contents">18</div></td></tr><tr><td class="day calendar-day-2015-07-19"><div class="day-contents">19</div></td><td class="day calendar-day-2015-07-20"><div class="day-contents">20</div></td><td class="day calendar-day-2015-07-21"><div class="day-contents">21</div></td><td class="day calendar-day-2015-07-22"><div class="day-contents">22</div></td><td class="day calendar-day-2015-07-23"><div class="day-contents">23</div></td><td class="day calendar-day-2015-07-24"><div class="day-contents">24</div></td><td class="day calendar-day-2015-07-25"><div class="day-contents">25</div></td></tr><tr><td class="day calendar-day-2015-07-26"><div class="day-contents">26</div></td><td class="day calendar-day-2015-07-27"><div class="day-contents">27</div></td><td class="day calendar-day-2015-07-28"><div class="day-contents">28</div></td><td class="day calendar-day-2015-07-29"><div class="day-contents">29</div></td><td class="day calendar-day-2015-07-30"><div class="day-contents">30</div></td><td class="day calendar-day-2015-07-31"><div class="day-contents">31</div></td><td class="day adjacent-month next-month calendar-day-2015-08-01"><div class="day-contents">1</div></td></tr></tbody></table></div></div>
+			  <!----Calender -------->
+			<link rel="stylesheet" href="css/clndr.css" type="text/css" />
+			<script src="js/underscore-min.js" type="text/javascript"></script>
+			<script src= "js/moment-2.2.1.js" type="text/javascript"></script>
+			<script src="js/clndr.js" type="text/javascript"></script>
+			<script src="js/site.js" type="text/javascript"></script>
+			<!----End Calender -------->
+			</div>
+			
+			<div class="clearfix"> </div>
 		</div>
-	   	</div>
-       
-     </body>
+<div class="copy navbar-fixed-bottom">
+            <p>copyright @ all rights reserved </p>
+	    </div>
+		</div>
+		<div class="clearfix"> </div>
+       </div>
+     </div>
+<!---->
+<!--scrolling js-->
+	<script src="js/jquery.nicescroll.js"></script>
+	<script src="js/scripts.js"></script>
+	<!--//scrolling js-->
+	<script src="js/bootstrap.min.js"> </script>
+</body>
 </html>
-

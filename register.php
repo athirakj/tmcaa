@@ -41,7 +41,8 @@ if(isset($_POST['submit']))
 	//	echo $imgContent;
 	$sql_one="insert into registered_stu(name,dob,present_add,permenent_add,previous,email,phone,mobile,whatsapp,telegram,facebook,membership,image,experience,dd,paytm,gpay,status,registered_on)values('$_POST[name]','$_POST[dob]','$_POST[presentaddress]','$_POST[paddress]','$_POST[yr]','$_POST[email]','$_POST[phn]','$_POST[mobile]','$_POST[wnumber]','$_POST[tnumber]','$_POST[facebook]','$_POST[member]','{$imgContent}','$_POST[about]','$_POST[dd]','$_POST[paytm]','$_POST[gpay]',1,now())";
 	//echo "hello testing " .$sql_one."-test";
-	
+	//echo $sql_one ;
+	//echo die();
  $alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890'; $pass = array(); //remember to declare $pass as an array 
  $alphaLength = strlen($alphabet) - 1; //put the length -1 in cache 
  for ($i = 0; $i < 8; $i++) { $n = rand(0, $alphaLength); $pass[] = $alphabet[$n]; } 
@@ -51,6 +52,9 @@ if(isset($_POST['submit']))
 	$result=mysqli_query($db,$sql_one);
 	$result2=mysqli_query($db,$sql_one2);
 	send_email($_POST[email],$pas);
+	echo '<div class="alert alert-success alert-dismissible">
+  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+  <strong>Successfully Registered ! </strong> Get in touch with us <br> Whatsapp Number : 9539989204<br> Join with us on <a href=" wwww.facebook.com">Facebook</a></div>';
 	//	echo '<meta http-equiv="Refresh" Content="0; URL=#">';
 //echo $sql_one;
 //die();
@@ -72,7 +76,7 @@ if	($result->num_rows>0)
 	$_SESSION["payment_status"] = $row2['payment_status'];
 	$row = mysqli_fetch_assoc($result);
 if( $row['user_type'] =="admin")
-header("Location: admin/home.php");
+header("Location: admin/index.php");
 else
 header("Location: student/index.php"); 
 }
@@ -176,7 +180,7 @@ else
               <input type="text" name="phn" >
             </div>
             <div class="col-md-6 form-group1 form-last">
-              <label class="control-label">Mobile Number</label>
+              <label class="control-label">Mobile Number *</label>
               <input type="text"  name="mobile" required>
             </div>
             <div class="clearfix"> </div>
@@ -205,7 +209,7 @@ else
             </div>
             <div class="col-md-6 form-group1 form-last">
               <label class="control-label">Attach your Passport size Photo *</label>
-              <input type="file"  name="photo" required>      									
+              <input type="file"  name="photo" >      									
             </div>
             <div class="clearfix"> </div>
             </div>
