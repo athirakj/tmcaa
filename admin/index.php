@@ -88,7 +88,6 @@ session_start();
       <th>Name</th>
         <th>E-Mail</th>
             <th>Contact</th>
-			<th>Registered On</th>
 			<th>Payment Status</th>
  <th>Action</th>
 
@@ -110,7 +109,6 @@ while($row=mysqli_fetch_array($res))
           <td><?=$row['name']; ?></td>
      <td><?=$row['email']; ?></td>
      <td><?=$row['phone']; ?></td>
-		  <td><?=$row['registered_on']; ?></td>
 		  <td><?= $row['payment_status'] == '1'? 'paid' : 'not paid'; ?></td>
       <td>
 
