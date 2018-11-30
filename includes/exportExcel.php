@@ -9,7 +9,7 @@ $xls_filename = 'export_'.date('dd-MM-yyyy').'.xls'; // Define Excel (.xls) file
   header("Content-Disposition: attachment; filename=$xls_filename");
   header("Pragma: no-cache");
   header("Expires: 0");
-  // echo mysqli_fetch_assoc($result);
+
 $flag = false;
 while ($row = mysqli_fetch_assoc($result)) {
     if (!$flag) {
