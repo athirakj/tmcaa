@@ -19,7 +19,7 @@
   <div class="container">
     <div class="row">
     <div class="col-md-8">
-     // <h2>CME Programme</h2></div>
+      <h2>CME Programme</h2></div>
       <div class="col-md-2"><a href="register.php"><img src="images/registernow.png" class="img-responsive" /></a></div>
       <div class="col-md-2"><a href="attachments/register-form.pdf"><img src="images/download.png" class="img-responsive" id="register"/></a></div>
     </div>
