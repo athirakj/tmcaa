@@ -157,10 +157,7 @@ if(isset($_POST['update']))
 	$re=mysqli_query($db,$sql_one);
 //		echo $sql_one();
 //	die();
-session_start();
-$sql="select * from registered_stu where student_id=".$_GET['upitem']."";
-$res1=mysqli_fetch_assoc(mysqli_query($db,$sql));
-$_SESSION["StuData"] = $res1;
+
 
 		echo '<meta http-equiv="Refresh" Content="0; URL=profile.php">';
 
