@@ -69,6 +69,8 @@ session_start();
 		    <div class="banner">		   
 				<h2>
 				<a href="index.php">Dashboard</a>
+				
+				<a  class="btn btn-success" href='../includes/exportExcel.php' >Download Excel </a>
 				</h2>
 		    </div>
 		<!--//banner-->
