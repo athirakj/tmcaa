@@ -62,7 +62,14 @@ $_SESSION["StuData"] = $res1;
       <div class="w3-card w3-round w3-white">
         <div class="w3-container">
          <h4 class="w3-center">My Profile</h4>
-         <p class="w3-center"><img src="https://www.w3schools.com/w3images/avatar3.png" class="w3-circle" style="height:106px;width:106px" alt="Avatar"></p>
+         <p class="w3-center">
+          <?php 
+          $encoded_image = base64_encode($_SESSION["StuData"]['image']);
+          echo "<img src='data:image/png;base64,{$encoded_image}' class='w3-circle' style='height:106px;width:106px' alt='Avatar'>";
+          ?> 
+         <!-- <img src="https://www.w3schools.com/w3images/avatar3.png" class="w3-circle" style="height:106px;width:106px" alt="Avatar"> -->
+        
+        </p>
          <hr>
 
          <p><i class="fa fa-pencil fa-fw w3-margin-right w3-text-theme"></i><?= $_SESSION["StuData"]["name"];?> </p>
@@ -110,7 +117,7 @@ $_SESSION["StuData"] = $res1;
       </div>
       
       <div class="w3-container w3-card w3-white w3-round w3-margin"><br>
-        <img src="https://www.w3schools.com/w3images/avatar2.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
+        <!-- <img src="https://www.w3schools.com/w3images/avatar2.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px"> -->
         <h4><?= $_SESSION["StuData"]["name"];?></h4><br>
         <hr class="w3-clear">
 <table>
