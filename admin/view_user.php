@@ -56,13 +56,22 @@ $row=mysqli_fetch_array($res1)
  ?>
  
  <table  class="view-user">
-   <tr>
+ <tr>
  <td> Profile Photo</td>
  <td> <?php
 // $content = stripslashes($row['image']); header('Content-type: image/jpeg'); echo $content;
-  echo '<img src="data:image/jpeg;base64,'.base64_encode( stripslashes($row['image']) ).'" hieght="200" width="200"/>';
+//  echo '<img src="data:image/jpeg;base64,'.base64_encode( stripslashes($row['image']) ).'" hieght="200" width="200"/>';
+         <p class="w3-center">
+          
+          $encoded_image = base64_encode($row['image']);
+          echo "<img src='data:image/png;base64,{$encoded_image}' class='w3-circle' style='height:106px;width:106px' alt='Avatar'>";
+         
+         <!-- <img src="https://www.w3schools.com/w3images/avatar3.png" class="w3-circle" style="height:106px;width:106px" alt="Avatar"> -->
+        
+        </p>
    ?> </td>  
  </tr>
+
 
  <tr>
  <td>Name</td>

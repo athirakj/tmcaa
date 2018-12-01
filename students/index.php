@@ -42,7 +42,7 @@ if	($result->num_rows>0)
 	$_SESSION["StuData"] = $row2;
 	$row = mysqli_fetch_assoc($result);
 if( $row['user_type'] =="admin")
-header("Location: admin/index.php");
+header("Location: ../admin/index.php");
 else
 header("Location: profile.php"); 
 }
