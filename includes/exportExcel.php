@@ -1,6 +1,6 @@
 <?php
  include ('../admin/classes/class_db.php'); 
-$sql="select * from registered_stu";
+$sql="select name,email,mobile from registered_stu";
 $result=mysqli_query($db,$sql);
 //echo $result['name'];
 $xls_filename = 'export_'.date('dd-MM-yyyy').'.xls'; // Define Excel (.xls) file name

@@ -52,6 +52,12 @@ session_start();
 			
 		});
 		</script>
+		<style>
+		.btn-success {
+background-color:#1ABC9C !important;
+border:none;
+		}
+		</style>
 </head>
 
 <body>

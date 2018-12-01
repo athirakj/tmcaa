@@ -52,9 +52,9 @@ if(isset($_POST['submit']))
 	$result=mysqli_query($db,$sql_one);
 	$result2=mysqli_query($db,$sql_one2);
 	send_email($_POST[email],$pas);
-	echo '<div class="alert alert-success alert-dismissible">
+	echo '<div class="alert alert-success alert-dismissible" align="center" style="font-size:16px;">
   <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-  <strong>Successfully Registered ! </strong> Get in touch with us <br> Whatsapp Number : 9539989204<br> Join with us on <a href=" wwww.facebook.com">Facebook</a></div>';
+  <strong>Successfully Registered ! </strong><br> Get in touch with us <br> Whatsapp Number : 9539989204<br> Join with us on <a href=" https://www.facebook.com/tmcaa.cme">Facebook</a></div>';
 	//	echo '<meta http-equiv="Refresh" Content="0; URL=#">';
 //echo $sql_one;
 //die();

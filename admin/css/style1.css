@@ -31,6 +31,7 @@ div#wrapper {
 	 height:100%;
 }
 /*-- header --*/
+
 .navbar .navbar-nav li a {
   padding: 0 10px;
   line-height: 56px;
@@ -361,6 +362,7 @@ a.dropdown-toggle.dropdown-at {
     background-color: #fff;
 }
 .full-left {
+	display:none;
     float: left;
     width: 40%;
     margin-left: 3%;
