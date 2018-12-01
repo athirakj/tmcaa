@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="header">
-      <div class="col-md-2"> <img src="images/logo.png" alt="Logo" id="logo"/> </div>
+      <div class="col-md-2"> <a href="http://mediacrow.com/TMCAA/"></a><img src="images/logo.png" alt="Logo" id="logo"/></a> </div>
       <div class="col-md-8">
         <nav class="navbar">
           <div class="navbar-header">
@@ -9,7 +9,7 @@
           </div>
           <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
-              <li><a href="#">Home</a></li>
+              <li><a href="http://mediacrow.com/TMCAA/">Home</a></li>
               <li><a href="#">About Us</a></li>
               <li><a href="#">CME</a></li>
               <li><a href="#">Academy</a></li>

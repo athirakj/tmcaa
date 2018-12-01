@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>TMCAA</title>
-<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" />
+<link rel="stylesheet" href="../css/bootstrap.min.css" type="text/css" />
 <link rel="stylesheet" type="text/css" href="../css/register-front-page.css" />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -21,7 +21,7 @@
   </form>
 
   <div class="login-help">
-    <a href="#">Register</a> • <a href="#">Forgot Password</a>
+    <a href="http://mediacrow.com/tmcaa-registration/register.php">Register</a> • <a href="#">Forgot Password</a>
   </div>
 </div>
 <?php
@@ -56,7 +56,7 @@ else
 
 <!-- <div id="error"><img src="https://dl.dropboxusercontent.com/u/23299152/Delete-icon.png" /> Your caps-lock is on.</div> -->
 
-  <script src='http://codepen.io/assets/libs/fullpage/jquery_and_jqueryui.js'></script>
+ <!-- <script src='http://codepen.io/assets/libs/fullpage/jquery_and_jqueryui.js'></script>-->
 
 </body>
 

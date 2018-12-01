@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Untitled Document</title>
+<title>Student : Profile</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-blue-grey.css">
@@ -62,7 +62,7 @@ $_SESSION["StuData"] = $res1;
       <div class="w3-card w3-round w3-white">
         <div class="w3-container">
          <h4 class="w3-center">My Profile</h4>
-         <p class="w3-center">
+           <p class="w3-center">
           <?php 
           $encoded_image = base64_encode($_SESSION["StuData"]['image']);
           echo "<img src='data:image/png;base64,{$encoded_image}' class='w3-circle' style='height:106px;width:106px' alt='Avatar'>";
@@ -83,7 +83,7 @@ $_SESSION["StuData"] = $res1;
       <!-- Accordion -->
       <div class="w3-card w3-round">
         <div class="w3-white">
-                <a href="edit.php?upitem=<?= $_SESSION["StuData"]["student_id"];?>">  <button style="margin-bottom:10px;" class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-circle-o-notch fa-fw w3-margin-right"></i> Edit Profile</button></a>
+                <a style="text-decoration:none;" href="edit.php?upitem=<?= $_SESSION["StuData"]["student_id"];?>">  <button style="margin-bottom:10px;" class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-circle-o-notch fa-fw w3-margin-right"></i> Edit Profile</button></a>
                   <button style="margin-bottom:10px;" class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-circle-o-notch fa-fw w3-margin-right"></i> Change Password</button>
 
          <a href="../user_login.php" style="text-decoration:none;"> <button class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-circle-o-notch fa-fw w3-margin-right"></i> Logout</button></a>
@@ -117,9 +117,9 @@ $_SESSION["StuData"] = $res1;
       </div>
       
       <div class="w3-container w3-card w3-white w3-round w3-margin"><br>
-        <!-- <img src="https://www.w3schools.com/w3images/avatar2.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px"> -->
+        <!--<img src="https://www.w3schools.com/w3images/avatar2.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">-->
         <h4><?= $_SESSION["StuData"]["name"];?></h4><br>
-        <hr class="w3-clear">
+        <hr class="w3-clear" style="margin:0px !important; ">
 <table>
  <tr> <td>Date Of Birth</td><td><?= $_SESSION["StuData"]["dob"];?></td> </tr>
  <tr><td> Present Address</td><td> <?= $_SESSION["StuData"]["present_add"];?></td></tr>

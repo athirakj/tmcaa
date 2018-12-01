@@ -35,7 +35,9 @@ if(isset($_POST['submit']))
  /*?>$check = getimagesize($_FILES["photo"]["tmp_name"]);
     if($check !== false){<?php */ 
         $image = $_FILES['photo']['tmp_name'];
-        $imgContent = addslashes(file_get_contents($image));
+       // $imgContent = addslashes(file_get_contents($image));
+                $imageData=file_get_contents($image);
+        $imgContent = mysqli_real_escape_string($db,$imageData);
 		//echo $imgContent;
 	//	$imgContent = mysqli_real_escape_string($db, $imgContent);
 	//	echo $imgContent;
@@ -54,7 +56,7 @@ if(isset($_POST['submit']))
 	send_email($_POST[email],$pas);
 	echo '<div class="alert alert-success alert-dismissible" align="center" style="font-size:16px;">
   <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-  <strong>Successfully Registered ! </strong><br> Get in touch with us <br> Whatsapp Number : 9539989204<br> Join with us on <a href=" https://www.facebook.com/tmcaa.cme">Facebook</a></div>';
+  <strong>Successfully Registered ! Your login Details send to your email</strong><br> Get in touch with us <br> Whatsapp Number : 9539989204<br> Join with us on <a href=" https://www.facebook.com/tmcaa.cme">Facebook</a></div>';
 	//	echo '<meta http-equiv="Refresh" Content="0; URL=#">';
 //echo $sql_one;
 //die();
