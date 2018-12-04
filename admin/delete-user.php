@@ -8,6 +8,6 @@ if(isset($_GET['delcom']))
 	$result=mysqli_query($db,$sql);
 	//echo $sql;
 
-echo'<meta http-equiv="refresh" content="0; URL= index.php">';
+echo'<meta http-equiv="refresh" content="0; URL= register.php">';
 }
 ?>	

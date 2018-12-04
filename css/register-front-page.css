@@ -142,7 +142,7 @@ label.control-label {
     margin: 0;
 }
 .form-group1 input[type="text"], .form-group1 textarea, .form-group1 input[type="password"], .form-group1 input[type="date"] {
-    border: 1px solid #E9E9E9;
+    border: 1px solid #484848;
     font-size: 0.9em;
     width: 100%;
     outline: none;
@@ -173,8 +173,8 @@ label.control-label {
 .nav>li>a {
     position: relative;
     display: block;
-    padding: 20px 14px;
-    font-size: 21px;
+   padding: 20px 10px;
+    font-size: 20px;
     font-weight: 500;
     color: #000;
 }

@@ -56,14 +56,7 @@ $row=mysqli_fetch_array($res1)
  ?>
  
  <table  class="view-user">
-   <tr>
- <td> Profile Photo</td>
- <td> <?php
-// $content = stripslashes($row['image']); header('Content-type: image/jpeg'); echo $content;
-  echo '<img src="data:image/jpeg;base64,'.base64_encode( stripslashes($row['image']) ).'" hieght="200" width="200"/>';
-   ?> </td>  
- </tr>
-
+  
  <tr>
  <td>Name</td>
  <td><?php echo $row['name']; ?></td>

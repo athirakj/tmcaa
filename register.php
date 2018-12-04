@@ -35,7 +35,9 @@ if(isset($_POST['submit']))
  /*?>$check = getimagesize($_FILES["photo"]["tmp_name"]);
     if($check !== false){<?php */ 
         $image = $_FILES['photo']['tmp_name'];
-        $imgContent = addslashes(file_get_contents($image));
+       // $imgContent = addslashes(file_get_contents($image));
+                $imageData=file_get_contents($image);
+        $imgContent = mysqli_real_escape_string($db,$imageData);
 		//echo $imgContent;
 	//	$imgContent = mysqli_real_escape_string($db, $imgContent);
 	//	echo $imgContent;
@@ -54,7 +56,7 @@ if(isset($_POST['submit']))
 	send_email($_POST[email],$pas);
 	echo '<div class="alert alert-success alert-dismissible" align="center" style="font-size:16px;">
   <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-  <strong>Successfully Registered ! </strong><br> Get in touch with us <br> Whatsapp Number : 9539989204<br> Join with us on <a href=" https://www.facebook.com/tmcaa.cme">Facebook</a></div>';
+  <strong>Successfully Registered ! Your login Details send to your email</strong><br> Get in touch with us <br> Whatsapp Number : 9539989204<br> Join with us on <a href=" https://www.facebook.com/tmcaa.cme">Facebook</a></div>';
 	//	echo '<meta http-equiv="Refresh" Content="0; URL=#">';
 //echo $sql_one;
 //die();
@@ -207,10 +209,10 @@ else
               <label class="control-label">Membership Number (if you are already a member)</label>
               <input type="text" name="member">
             </div>
-            <div class="col-md-6 form-group1 form-last">
+           <!-- <div class="col-md-6 form-group1 form-last">
               <label class="control-label">Attach your Passport size Photo *</label>
               <input type="file"  name="photo" >      									
-            </div>
+            </div>-->
             <div class="clearfix"> </div>
             </div>
 
@@ -220,13 +222,22 @@ else
               <textarea  placeholder="Your Details..." name="about"></textarea>
             </div>
              <div class="clearfix"> </div>
+             
+             <div class="vali-form">
+            <div class="col-md-6 form-group1 form-last" style="margin-top: 10px;">
+              <label class="control-label" style="margin-bottom: 10px; color: red;">Attach your Passport size Photo *</label>
+              <input type="file"  name="photo" >      									
+            </div>
+            <div class="clearfix"> </div>
+            </div>
+             
              <div class="pay">
              <h4>Payment Details</h4>
              <br />
              <p>Provide anyone of the method to pay and the details here. If you are a registered member then you have 1000/- reduction in registration fee.</p>
              <div class="vali-form">
             <div class="col-md-4 form-group1">
-              <img src="images/dd.png" />
+              <img src="images/dhanalakshmi.jpg" />
             </div>
             <div class="col-md-5 form-group1">
               <label class="control-label">DD Number</label>
@@ -244,14 +255,15 @@ else
             <div class="col-md-4 form-group1">
               <img src="images/paytm.png" />
             </div>
-            <div class="col-md-5 form-group1">
-              <label class="control-label">Paytm Number</label>
-              <input type="text" name="paytm" >
+            
+            <div class="col-md-5 form-group1 form-last paytm">
+              <label class="control-label"><b> Paytm number</b></label>
+<p class="paytm">+91 8078588862</p>
             </div>
             <div class="col-md-5 form-group1 form-last paytm">
-              <label class="control-label"><b>Our Paytm Details</b></label>
-<p class="paytm">Mr.Praveen - 9895460272</p>
-<p>Mr.Rajeev - 9995330344</p>          
+              <label class="control-label"><b> Bank Account Details</b></label>
+<p class="paytm">AC NO 026205300008984</p>
+<p>IFSC CODEDLXB0000262</p>
             </div>
             <div class="clearfix"> </div>
             </div>  
@@ -260,18 +272,18 @@ else
             <div class="col-md-4 form-group1">
               <img src="images/g-pay.png" />
             </div>
-            <div class="col-md-5 form-group1">
-              <label class="control-label">GooglePay Number</label>
-              <input type="text" name="gpay" >
+             <div class="col-md-5 form-group1 form-last paytm">
+              <label class="control-label"><b> GooglePay number</b></label>
+<p class="paytm">+91 8078588862</p>
             </div>
-            <div class="col-md-5 form-group1 form-last">
-              <label class="control-label"><b>Our Google Details</b></label>
-<p class="paytm">Mr.Praveen - 9895460272</p>
-<p>Mr.Rajeev - 9995330344   </p>       
+            <div class="col-md-5 form-group1 form-last paytm">
+              <label class="control-label"><b> Bank Account Details</b></label>
+<p class="paytm">AC NO 026205300008984</p>
+<p>IFSC CODEDLXB0000262</p>
             </div>
             <div class="clearfix"> </div>
             </div>         </div>
-                       <div align="left"> <p><input type="checkbox" name="terms" required>I undertake to pay any additional amount in case the TMCAA modifies the Registration fees for the CME. I understand that the amount paid is not refundable and not Exchangeable. In the event of discontinuation of the CME programme by the organisers, the liability of TMCAA is limited to refund of CME Registration Fee, less the actual expenditure incurred to the TMCAA</p> <BR></div>
+                       <div align="left"><p><input type="checkbox" name="terms" required style="margin-right: 20px;">I undertake to pay any additional amount in case the TMCAA modifies the Registration fees for the CME. I understand that the amount paid is not refundable and not Exchangeable. In the event of discontinuation of the CME programme by the organisers, the liability of TMCAA is limited to refund of CME Registration Fee, less the actual expenditure incurred to the TMCAA <BR></p> </div>
  
             <div class="col-md-12 form-group" style="margin-top:15px;" align="center">
               <input type="submit" class="btn btn-primary" value="Submit" name="submit">
