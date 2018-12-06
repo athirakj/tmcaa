@@ -104,8 +104,21 @@ border:none;
   </thead>
   <tbody>
   <?php
-$sql='select * from registered_stu where status=1 ORDER BY student_id DESC';
-// echo $sql;
+//   if(isset($_GET['startrow']) and $_GET['startrow']=='last') {
+// 	$row=mysqli_fetch_array(mysqli_query($db,'select ((select count(*) from registered_stu)-10) as rows'));
+// 	echo $row;
+// 	$startrow=$row['student_id'];
+//   }
+// else 
+if (!isset($_GET['startrow']) or !is_numeric($_GET['startrow'])) {
+	//we give the value of the starting row to 0 because nothing was found in URL
+	$startrow = 0;
+  //otherwise we take the value from the URL
+  } else {
+	$startrow = (int)$_GET['startrow'];
+  }
+$sql='select * from registered_stu where status=1 ORDER BY student_id DESC LIMIT '.$startrow.', 10';
+ //echo $sql;
 	$res=mysqli_query($db,$sql);
 
 $i=1;
@@ -130,6 +143,13 @@ while($row=mysqli_fetch_array($res))
   <?php
 
 }
+$prev = $startrow - 10;
+
+//only print a "Previous" link if a "Next" was clicked
+if ($prev >= 0)
+    echo '<a href="'.$_SERVER['PHP_SELF'].'?startrow='.$prev.'">Previous</a>&nbsp;&nbsp;';
+
+echo '<a href="'.$_SERVER['PHP_SELF'].'?startrow='.($startrow+10).'">Next</a>';
 
 ?>
 
